@@ -43,7 +43,7 @@ Currently, this script does not account for custom ssh ports.
 [![Demo Video](readme/nautilus-scp.gif)](https://youtu.be/nXQ54ffyrTI)
 Click on the animated GIF above to see it in high-res with YouTube.
 
-![flow.png](readmd/flow.png)
+![flow.png](readme/flow.png)
 
 ## DISCLAIMER
 
