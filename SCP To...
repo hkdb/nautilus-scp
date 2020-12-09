@@ -36,6 +36,7 @@ if [ "$HOST" == "Specify a Custom Host..." ]; then
 		zenity --error --text="No host specified!"
 		exit
 	fi
+	echo $HOST >> ~/.scp_hosts
 fi
 
 # Identify destination path by a list
@@ -51,6 +52,7 @@ if [ "$LOCATION" == "Specify a Custom Location..." ]; then
 		zenity --error --text="No location specified!"
 		exit
 	fi
+	echo $HOST >> ~/.scp_locations
 fi
 
 # Everything looks good. Let's do it!
