@@ -43,25 +43,7 @@ Currently, this script does not account for custom ssh ports.
 [![Demo Video](readme/nautilus-scp.gif)](https://youtu.be/nXQ54ffyrTI)
 Click on the animated GIF above to see it in high-res with YouTube.
 
-Right click on file or dir
-     |
-     --- Scripts
-            |
-            --- SCP To...
-                  |
-                  --- Specify a Custom Host... --->  Manually enter a host FQDN
-                  |                                              |
-                  --- Select a preloaded host                    |
-                                |                                |
-                                |<--------------------------------
-                                |
-                                --- Specify a Custom Location ---> Manually enter a destination location (path) ending with "/"
-                                |                                                             |
-                                --- Select a preloaded location                               |
-                                                |                                             |
-                                                |<---------------------------------------------
-                                                |
-                                                --- Execute based on user input                     
+![flow.png](readmd/flow.png)
 
 ## DISCLAIMER
 
