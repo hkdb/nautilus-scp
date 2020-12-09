@@ -1,0 +1,57 @@
+#!/bin/bash
+#scp_to -- nautilus script that scp's files to a fixed list of hosts in a file
+#original author: Brad Smith (bradleydsmith@gmail.com) 
+#modified by: hkdb (hkdb@3df.io)
+#NEED: zenity, ssh key based auth, host file under ~/.scp_hosts(or call it whatever you like)
+#Install in ~/.local/share/nautilus/scripts
+
+HOSTS="$HOME/.scp_hosts"
+LOCATIONS="$HOME/.scp_locations"
+FILEPATH=$NAUTILUS_SCRIPT_SELECTED_FILE_PATHS
+SCP='/usr/bin/scp'
+SSH_ID="$HOME/.ssh/id_rsa.pub" #make sure you are using ssh keys or this is a waste of time
+ZENITY='/usr/bin/zenity '
+
+# Sanity checks
+for sanity_check in $HOSTS $ZENITY $SSH_ID $SCP $FILEPATH; do
+	ZENITY_ERROR_SANITY="There is an error, it involved $sanity_check.\n Probably binary or file missing" 
+	if [ ! -e $sanity_check ]; then 
+		#zenity --error --text="$(eval "echo \"$ZENITY_ERROR_SANITY\"")"
+		zenity --error --text="$ZENITY_ERROR_SANITY"
+		exit 
+	fi
+done
+
+
+# Identify destination host
+HOST=`cat $HOSTS | zenity --list --title "SCP HOSTS" --text "Pick a host.." --column "HOSTS"`
+if [ $? -ne 0 ]; then
+	exit
+fi
+
+# If custom location is chosen, ask for location by text input
+if [ "$HOST" == "Specify a Custom Host..." ]; then
+	HOST=`zenity --entry -- title "CUSTOM DESTINATION HOST" --text "Specify a host..." --entry-text "host.example.com"`
+	if [ $? -ne 0 ]; then
+		zenity --error --text="No host specified!"
+		exit
+	fi
+fi
+
+# Identify destination path by a list
+LOCATION=`cat $LOCATIONS | zenity --list --title "DESTINATION LOCATION" --text "Specify a location..." --column "LOCATION"`
+if [ $? -ne 0 ]; then
+	exit
+fi
+
+# If custom location is chosen, ask for location by text input
+if [ "$LOCATION" == "Specify a Custom Location..." ]; then
+	LOCATION=`zenity --entry -- title "CUSTOM DESTINATION LOCATION" --text "Specify a location..." --entry-text "$HOME"`
+	if [ $? -ne 0 ]; then
+		zenity --error --text="No location specified!"
+		exit
+	fi
+fi
+
+# Everything looks good. Let's do it!
+gnome-terminal -- $HOME/.local/bin/nscp.sh -f $FILEPATH -d $HOST -l $LOCATION
