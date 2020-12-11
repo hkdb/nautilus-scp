@@ -13,6 +13,7 @@ I am normally doing most of this in a terminal but once in a while, someone will
 
 ## CHANGE LOG
 
+- 12102020 - Fixed potential permissions issues in install.sh & added open scripts folder after install
 - 12092020 - Added auto add custom input to .scp_hosts and .scp_locations
 - 12092020 - initial commit
 
@@ -32,6 +33,8 @@ Currently, this script does not account for custom ssh ports.
 1. `git clone https://github.com/hkdb/nautilus-scp.git`
 2. `cd nautilus-scp`
 3. `./install.sh`
+
+If the "Scripts" menu item does not appear when you left click files, you may need to manually right click "SCP To..." in ~/.local/share/nautilus/scripts within Nautilus and add executable permissions. Some times the terminal perms are not good enough.
 
 ## CONFIGURATIONS
 

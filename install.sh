@@ -21,6 +21,7 @@ fi
 
 echo -e "Installing Nautilus SCP...\n"
 cp SCP\ To... ~/.local/share/nautilus/scripts/
+chmod +x ~/.local/share/nautilus/scripts/SCP\ To...
 
 if [ ! -d ~/.local/bin ]; then
 	echo -e "No ~/.local/bin... creating..."
@@ -28,3 +29,6 @@ if [ ! -d ~/.local/bin ]; then
 fi
 
 cp nscp.sh ~/.local/bin
+chmod +x ~/.local/bin/nscp.sh
+
+xdg-open ~/.local/share/nautilus/scripts/
