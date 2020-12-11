@@ -9,7 +9,7 @@
 #                                   #
 #####################################
 
-VERSION="v0.01"
+VERSION="v0.02"
 
 if [ ! -f /usr/bin/zenity ]; then
 	echo -e "Zenity is not installed... You must first install it for this script to work. To install, execute the following command in termianl:\n\nsudo apt install zenity\n"

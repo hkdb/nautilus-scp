@@ -13,6 +13,7 @@ I am normally doing most of this in a terminal but once in a while, someone will
 
 ## CHANGE LOG
 
+- 12102020 - Fixed permissions of scripts and bumped to v0.02
 - 12102020 - Fixed potential permissions issues in install.sh & added open scripts folder after install
 - 12092020 - Added auto add custom input to .scp_hosts and .scp_locations
 - 12092020 - initial commit
